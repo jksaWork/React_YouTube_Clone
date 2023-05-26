@@ -3,21 +3,20 @@ import { Stack } from "@mui/material";
 import { categories } from "../utlis/constants";
 import { ScrollContainer } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
-function SideBar() {
-  const [selectCategory, setSelectCategory] = useState("New");
-
+function SideBar({ selectCategory, setSelectCategory, setLoading }) {
   const HandelChangeMenuItem = (name) => {
     setSelectCategory(name);
+    setLoading(true);
   };
   return (
     <>
       <Stack
         //  direction="col"
         sx={{
-          flexDirection: { md: "col" },
+          flexDirection: { xs: "row", sm: "column" },
           overflow: "auto",
           height: { sx: "auto", sm: "94%" },
-          width: { sx: "auto", sm: "150%" },
+          minWidth: "300px",
         }}
       >
         {categories.map((el) => (
@@ -27,7 +26,7 @@ function SideBar() {
               className={`text-white flex gap-3 font-bolder  p-2 rounded-[5px] w-full  ${
                 el.name === selectCategory ? "bg-[#fc1503]" : "bg-[#e3e3e3e]"
               } 
-            hover:bg-[#fc1503]  transition-all  transition-ease
+            hover:bg-[#fc1503] mx-2  transition-all  transition-ease
             `}
             >
               <span>
@@ -38,7 +37,9 @@ function SideBar() {
                   opacity={el.name === selectCategory ? 1 : 0.5}
                 />
               </span>
-              <span class={`${el.name === selectCategory ? "font-bold" : ""} `}>
+              <span
+                className={`${el.name === selectCategory ? "font-bold" : ""} `}
+              >
                 {" "}
                 {el.name}
               </span>
