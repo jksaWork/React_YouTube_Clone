@@ -5,7 +5,7 @@ import { ChannelCard, VideoCard } from "./";
 function VediosComponents({ videos, Loading }) {
   console.log(videos, Loading, "veriosns");
   return Loading ? (
-    <div className="w-full h-[97%] flex justify-center items-center">
+    <div className="w-full h-[50vh] flex justify-center items-center">
       <Triangle
         height="180"
         width="180"
@@ -20,7 +20,7 @@ function VediosComponents({ videos, Loading }) {
     <div className="w-full ">
       <Stack gap={2} flexWrap="wrap" justifyContent={"center"} direction="row">
         {videos.map((item) => (
-          <VideoCard vedio={item} />
+          <VideoCard vedio={item} key={item} />
         ))}
       </Stack>
     </div>

@@ -20,6 +20,7 @@ export const categories = [
   { name: "JS Mastery", icon: MdCode },
   { name: "Coding", icon: MdCode },
   { name: "ReactJS", icon: MdCode },
+  { name: "Elzero", icon: MdCode },
   { name: "Music", icon: MdMusicVideo },
   { name: "Education", icon: MdSchool },
   { name: "Podcast", icon: MdOutlineGraphicEq },

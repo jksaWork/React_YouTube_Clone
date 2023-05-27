@@ -13,6 +13,7 @@ import {
   demoVideoUrl,
   demoChannelTitle,
   demoVideoTitle,
+  demoProfilePicture,
 } from "../utlis/constants";
 import FetchFromApi from "../utlis/FetchFromApi";
 
@@ -31,18 +32,7 @@ export default VideoCard;
 export function ActionAreaCard({ vedio }) {
   //   console.log(vedio);
   const [ChanelImage, setChanelImage] = useState("");
-  const getIamge = (chanel_id) => {
-    FetchFromApi(`channels?part=snippet,statistics&id=${chanel_id}`).then(
-      (res) => {
-        console.log(res);
-        let banner_image =
-          res.data.items[0].brandingSettings.image.bannerExternalUrl;
-        console.log(banner_image, "chanel_image");
-        setChanelImage(banner_image);
-        console.log(ChanelImage, "affter Set");
-      }
-    );
-  };
+  const getIamge = (chanel_id) => demoProfilePicture;
   const {
     channelId,
     channelTitle,
@@ -65,11 +55,11 @@ export function ActionAreaCard({ vedio }) {
         />
         <CardContent>
           <div className="flex">
-            <div className="w-[50px]  mr-3">
+            <div className="w-[30px]  mr-3">
               {getIamge(channelId)}
               <img
                 src={ChanelImage}
-                className="w-[90%] h-[90%] rounded-full"
+                className="w-[30px] h-[30px] rounded-full"
                 loading="lazy"
               />
             </div>
