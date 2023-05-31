@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import { Stack, Box, Typography } from "@mui/material";
 import { SideBar, VediosComponents } from "./index";
+import { useParams } from "react-router-dom";
+
 import FetchFromApi from "../utlis/FetchFromApi";
 import AppLayouts from "./AppLayouts";
-function Feed() {
-  const [selectCategory, setSelectCategory] = useState("New");
+function SearchFeed() {
+  const { searchTrem } = useParams();
+  const [selectCategory, setSelectCategory] = useState(searchTrem);
   const [Vedios, setVedios] = useState({});
   const [Loading, setLoading] = useState(true);
   useEffect(() => {
-    FetchFromApi(`search?part=snippet&q=${selectCategory}`).then((res) => {
+    setLoading(true);
+    setSelectCategory(searchTrem);
+
+    FetchFromApi(`search?part=snippet&q=${searchTrem}`).then((res) => {
       setVedios(res.data.items);
-      console.log(res.data.items);
       setLoading(false);
+      setSelectCategory(searchTrem);
     });
-  }, [selectCategory]);
+  }, [searchTrem]);
 
   return (
-    <AppLayouts>
+    <AppLayouts setSearch={() => setSelectCategory}>
       <Stack
         direction="row"
         sx={{
@@ -28,8 +34,6 @@ function Feed() {
         <Box
           sx={{
             height: { sm: "auto", md: "92vh" },
-            // wdith: { sx: "auto", sm: "25%" },
-            // width: "350px",
             overflow: "hidden",
             pl: 3,
           }}
@@ -74,4 +78,4 @@ function Feed() {
   );
 }
 
-export default Feed;
+export default SearchFeed;

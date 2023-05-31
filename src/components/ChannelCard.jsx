@@ -17,8 +17,6 @@ function ChannelCard({ chanel }) {
     thumbnails,
     title,
   } = chanel.snippet;
-
-  console.log(chanel.snippet);
   return (
     <div className="text-white w-full bg-[#161515] p-5 my-3  rounded-xl">
       <div className="flex no-wrap justify-between items-center">

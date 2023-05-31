@@ -3,7 +3,8 @@ import { Stack } from "@mui/material";
 import { logo } from "../utlis/constants";
 import { MdAccessibilityNew } from "react-icons/md";
 import { NavBarSearch } from "./";
-function NavBar() {
+import { useNavigate } from "react-router-dom";
+function NavBar(props) {
   return (
     <div className="flex  flex-col content-center h-[8vh]">
       <Stack
@@ -20,7 +21,7 @@ function NavBar() {
         {/* <Link to="/" style={{ display: "flex", alignItems: "center" }}> */}
         <img src={logo} alt="logo" className="max-h-[40px]" />
         {/* </Link> */}
-        <NavBarSearch />
+        <NavBarSearch setSearch={props.setSearch} />
       </Stack>
     </div>
   );
