@@ -3,20 +3,19 @@ import { Stack } from "@mui/material";
 import { categories } from "../utlis/constants";
 import { ScrollContainer } from "react-nice-scroll";
 import "react-nice-scroll/dist/styles.css";
-function SideBar({ selectCategory, setSelectCategory, setLoading }) {
+import { useNavigate } from "react-router-dom";
+function SideBar({ setSearch, selectCategory, setSelectCategory, setLoading }) {
+  const navigate = useNavigate();
   const HandelChangeMenuItem = (name) => {
     setSelectCategory(name);
+    navigate("/search/" + name);
     setLoading(true);
   };
   return (
     <>
       <Stack
-        //  direction="col"
         sx={{
           flexDirection: { xs: "row", sm: "column" },
-          overflow: "auto",
-          height: { sx: "auto", sm: "94%" },
-          minWidth: "300px",
         }}
       >
         {categories.map((el) => (

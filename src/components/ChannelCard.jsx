@@ -18,12 +18,12 @@ function ChannelCard({ chanel }) {
     title,
   } = chanel.snippet;
   return (
-    <div className="text-white w-full bg-[#161515] p-5 my-3  rounded-xl">
+    <div className="text-white w-full bg-[#161515] p-5 my-3  mx-10 rounded-xl">
       <div className="flex no-wrap justify-between items-center">
         <div className="flex items-center justify-center">
           <img
             src={thumbnails?.high?.url}
-            class=" max-w-[250px]  min-w-[250px] rounded-full"
+            class=" max-w-[150px]  min-w-[250px] rounded-[50%]"
           />
         </div>
         {/* Descrption Section */}

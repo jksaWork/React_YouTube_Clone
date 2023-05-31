@@ -27,32 +27,6 @@ function Feed() {
       >
         <Box
           sx={{
-            height: { sm: "auto", md: "92vh" },
-            // wdith: { sx: "auto", sm: "25%" },
-            // width: "350px",
-            overflow: "hidden",
-            pl: 3,
-          }}
-        >
-          <SideBar
-            selectCategory={selectCategory}
-            setSelectCategory={setSelectCategory}
-            setLoading={setLoading}
-          />
-          <Typography
-            sx={{
-              textAlign: "center",
-              color: "white",
-              p: 2,
-              fontFamily: "italc",
-            }}
-          >
-            copyright Jksa altigani
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
             flex: 1,
           }}
         >

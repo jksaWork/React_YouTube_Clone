@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import ReactWOW from "react-wow";
-
+import { Link } from "react-router-dom";
 import {
   demoThumbnailUrl,
   demoChannelUrl,
@@ -31,7 +31,7 @@ function VideoCard({ vedio }) {
 export default VideoCard;
 
 export function ActionAreaCard({ vedio }) {
-  //   console.log(vedio);
+  console.log(vedio, "Vedios ------------");
   const [ChanelImage, setChanelImage] = useState(demoProfilePicture);
   const {
     channelId,
@@ -45,15 +45,18 @@ export function ActionAreaCard({ vedio }) {
     <>
       <Card variant="dark" sx={{ background: "#161515" }}>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            // height="100"
-            sx={{
-              height: 170,
-            }}
-            image={thumbnails?.high?.url}
-            alt="green iguana"
-          />
+          <Link to={`/vedio/${vedio.id.videoId}`}>
+            <CardMedia
+              component="img"
+              // height="100"
+              sx={{
+                height: 170,
+              }}
+              image={thumbnails?.high?.url}
+              alt="green iguana"
+            />
+          </Link>
+
           <CardContent>
             <div className="flex">
               <div className="w-[30px]  mr-3">

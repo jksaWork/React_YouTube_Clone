@@ -13,7 +13,6 @@ function SearchFeed() {
   useEffect(() => {
     setLoading(true);
     setSelectCategory(searchTrem);
-
     FetchFromApi(`search?part=snippet&q=${searchTrem}`).then((res) => {
       setVedios(res.data.items);
       setLoading(false);
@@ -31,30 +30,6 @@ function SearchFeed() {
           gap: 3,
         }}
       >
-        <Box
-          sx={{
-            height: { sm: "auto", md: "92vh" },
-            overflow: "hidden",
-            pl: 3,
-          }}
-        >
-          <SideBar
-            selectCategory={selectCategory}
-            setSelectCategory={setSelectCategory}
-            setLoading={setLoading}
-          />
-          <Typography
-            sx={{
-              textAlign: "center",
-              color: "white",
-              p: 2,
-              fontFamily: "italc",
-            }}
-          >
-            copyright Jksa altigani
-          </Typography>
-        </Box>
-
         <Box
           sx={{
             flex: 1,

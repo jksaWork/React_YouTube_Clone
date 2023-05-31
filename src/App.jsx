@@ -1,7 +1,13 @@
 import viteLogo from "/vite.svg";
 // import "./App.css";
 import { Box } from "@mui/material";
-import { Feed, NavBar, ChanelDetails, SearchFeed } from "./components/index";
+import {
+  Feed,
+  NavBar,
+  ChanelDetails,
+  SearchFeed,
+  VedioDetails,
+} from "./components/index";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "./App.css";
@@ -16,6 +22,10 @@ const router = createBrowserRouter([
     element: <ChanelDetails />,
   },
 
+  {
+    path: "vedio/:id",
+    element: <VedioDetails />,
+  },
   {
     path: "search/:searchTrem",
     element: <SearchFeed />,

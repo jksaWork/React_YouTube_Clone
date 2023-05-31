@@ -7,3 +7,4 @@ export { default as VideoCard } from "./VideoCard";
 export { default as ChannelCard } from "./ChannelCard";
 export { default as ChanelDetails } from "./ChanelDetails";
 export { default as SearchFeed } from "./SearchFeed";
+export { default as VedioDetails } from "./VedioDetails";
