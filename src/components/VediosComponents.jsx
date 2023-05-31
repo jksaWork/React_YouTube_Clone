@@ -19,9 +19,13 @@ function VediosComponents({ videos, Loading }) {
   ) : (
     <div className="w-full ">
       <Stack gap={2} flexWrap="wrap" justifyContent={"center"} direction="row">
-        {videos.map((item) => (
-          <VideoCard vedio={item} key={item} />
-        ))}
+        {videos.map((item) => {
+          if (item.id.videoId) {
+            return <VideoCard vedio={item} key={item.id} />;
+          } else {
+            return <ChannelCard chanel={item} />;
+          }
+        })}
       </Stack>
     </div>
   );

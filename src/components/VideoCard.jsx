@@ -31,8 +31,7 @@ export default VideoCard;
 
 export function ActionAreaCard({ vedio }) {
   //   console.log(vedio);
-  const [ChanelImage, setChanelImage] = useState("");
-  const getIamge = (chanel_id) => demoProfilePicture;
+  const [ChanelImage, setChanelImage] = useState(demoProfilePicture);
   const {
     channelId,
     channelTitle,
@@ -56,7 +55,7 @@ export function ActionAreaCard({ vedio }) {
         <CardContent>
           <div className="flex">
             <div className="w-[30px]  mr-3">
-              {getIamge(channelId)}
+              {/* {getIamge(channelId)} */}
               <img
                 src={ChanelImage}
                 className="w-[30px] h-[30px] rounded-full"

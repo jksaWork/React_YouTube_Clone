@@ -7,7 +7,7 @@ const options = {
   params: {
     //     playlistId: "RDZiQo7nAkQHU",
     //     part: "snippet",
-    maxResults: "20",
+    maxResults: "9",
   },
   headers: {
     "X-RapidAPI-Key": import.meta.env.VITE_REACT_APP_RAPID_API_KEY,
