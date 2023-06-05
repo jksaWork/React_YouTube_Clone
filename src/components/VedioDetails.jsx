@@ -12,14 +12,12 @@ import VediosComponents from "./VediosComponents";
 import ReactPlayer from "react-player";
 function VedioDetails() {
   const { id } = useParams();
-  console.log(id);
   const [Loading, setLoading] = useState(true);
   const [Vedios, setVedios] = useState({});
   const [vedio, setVedio] = useState({});
   const [ChannelId, setChannelId] = useState();
   const [Channel, setChannel] = useState({});
   const [ChanelImage, setChanelImage] = useState("");
-  console.log(Vedios, vedio, "--------------chanel ------------");
 
   useEffect(() => {
     FetchFromApi(`videos?id=${id}&part=contentDetails,snippet,statistics`).then(
@@ -31,10 +29,12 @@ function VedioDetails() {
 
   useEffect(() => {
     if (ChannelId) {
-      console.log("Fetch Chanel Data");
-      FetchFromApi(`channels?id=${ChanelId}&part=snippet`).then((res) => {
-        setChannel(res.data.items[0]);
-      });
+      FetchFromApi(`channels?id=${ChanelId}&part=snippet`)
+        .then((res) => {
+          setChannel(res.data.items[0]);
+          console.log("Chanel Id Is Seted");
+        })
+        .catch((err) => console.log("Erro When Fetch Data"));
     }
   }, [ChannelId]);
 
@@ -94,7 +94,7 @@ function VedioDetails() {
                           {title}
                         </div>
                       </Typography>
-                      <ChanelDetatilsComponents channel="Channel" />
+                      <ChanelDetatilsComponents channel={Channel} />
                     </div>
                   </div>
                 </CardContent>
@@ -112,52 +112,47 @@ function VedioDetails() {
     })()
   );
 }
-
 const ChanelDetatilsComponents = (channel) => {
-  const {
-    snippet: { thumbnails },
-  } = channel;
-  return (
-    <div className="text-white w-full bg-[#161515] p-5   rounded-xl">
-      <div className="flex no-wrap justify-between items-center">
-        <div className="flex items-center justify-center">
-          <img
-            src={thumbnails?.high?.url}
-            class=" max-w-[20px]  min-w-[20px] mx-3  rounded-full"
-          />
-          <div className="max-w-[400px] mx-4">
-            <h1 class="text-bold text-2xl mt-2">
-              <Link to={`chanels/${Channel.id.channelId}`}>
-                {Channel.snippet.title}
-              </Link>
-            </h1>
-            <h5 class="text-bold text-md mt-2">
-              {Channel.snippet.description}
-            </h5>
-            <p class="text-bold mt-5">{Channel.snippet.publishTime}</p>
-          </div>
-        </div>
-        {/* Descrption Section */}
+  console.log(channel, "Channnel ");
 
-        <div class="md:block hidden">
-          <Button
-            variant="text"
-            sx={{ color: "white", px: "30px" }}
-            startIcon={<MdNotificationsNone />}
-          >
-            subscribe
-          </Button>
+  return null;
+  // <div className="text-white w-full bg-[#161515] p-5   rounded-xl">
+  //   <div className="flex no-wrap justify-between items-center">
+  //     <div className="flex items-center justify-center">
+  //       <img
+  //         src={thumbnails?.high?.url}
+  //         class=" max-w-[20px]  min-w-[20px] mx-3  rounded-full"
+  //       />
+  //       <div className="max-w-[400px] mx-4">
+  //         <h1 class="text-bold text-2xl mt-2">
+  //           <Link to={`chanels/${Channel.id.channelId}`}>
+  //             {Channel.snippet.title}
+  //           </Link>
+  //         </h1>
+  //         <h5 class="text-bold text-md mt-2">{Channel.snippet.description}</h5>
+  //         <p class="text-bold mt-5">{Channel.snippet.publishTime}</p>
+  //       </div>
+  //     </div>
+  //     {/* Descrption Section */}
 
-          <Button
-            variant="contained"
-            sx={{ color: "white", px: "30px" }}
-            //     startIcon={<MdNotificationsNone />}
-          >
-            Join
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
+  //     <div class="md:block hidden">
+  //       <Button
+  //         variant="text"
+  //         sx={{ color: "white", px: "30px" }}
+  //         startIcon={<MdNotificationsNone />}
+  //       >
+  //         subscribe
+  //       </Button>
+
+  //       <Button
+  //         variant="contained"
+  //         sx={{ color: "white", px: "30px" }}
+  //         //     startIcon={<MdNotificationsNone />}
+  //       >
+  //         Join
+  //       </Button>
+  //     </div>
+  //   </div>
+  // </div>;
 };
 export default VedioDetails;

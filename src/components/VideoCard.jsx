@@ -31,7 +31,7 @@ function VideoCard({ vedio }) {
 export default VideoCard;
 
 export function ActionAreaCard({ vedio }) {
-  console.log(vedio, "Vedios ------------");
+  // console.log(vedio, "Vedios ------------");
   const [ChanelImage, setChanelImage] = useState(demoProfilePicture);
   const {
     channelId,
